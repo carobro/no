@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No as a Service</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(
+        120deg,
+        hsl(var(--h1), 90%, 60%),
+        hsl(var(--h2), 90%, 60%),
+        hsl(var(--h3), 90%, 60%)
+      );
+      animation: gradientShift 8s ease infinite;
+      transition: background 1s ease;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 24px;
+      padding: 4rem;
+      max-width: 900px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      color: white;
+      backdrop-filter: blur(10px);
+      animation: popIn 0.6s ease-out;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .no {
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.3),
+        0 0 30px rgba(0,0,0,0.8);
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      opacity: 0.6;
+    }
+	
+	 .credit {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      font-size: 0.85rem;
+      opacity: 0.65;
+      color: white;
+      pointer-events: none;
+      text-shadow: 0 0 6px rgba(0,0,0,0.8);
+    }
+	
+	#question {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.no {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  line-height: 1.2;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.3),
+    0 0 30px rgba(0,0,0,0.8);
+
+  /* animation starting state */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* animation when text arrives */
+.no.show {
+  animation: fadeInUp 1.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* bottom-left credit */
+.credit {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  font-size: 0.85rem;
+  opacity: 0.65;
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(0,0,0,0.8);
+}
+
+.credit:hover {
+  opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+<body>
+  <div class="card">
+    <div id="question">Why I don’t want to do it:</div>
+    <div id="reason" class="no"></div>
+  </div>
+
+  <a class="credit" href="https://github.com/hotheadhacker/no-as-a-service" target="_blank" rel="noopener noreferrer">
+    powered by no-as-a-service</a>
+</body>
+
+<script>
+  // 🎨 Randomize background colors
+  const root = document.documentElement;
+  root.style.setProperty('--h1', Math.floor(Math.random() * 360));
+  root.style.setProperty('--h2', Math.floor(Math.random() * 360));
+  root.style.setProperty('--h3', Math.floor(Math.random() * 360));
+
+  const reasonEl = document.getElementById("reason");
+
+  fetch("https://naas.isalman.dev/no")
+    .then(res => res.json())
+    .then(data => {
+      // small delay for dramatic effect
+      setTimeout(() => {
+        reasonEl.textContent = data.reason;
+        reasonEl.classList.add("show");
+      }, 400);
+    })
+    .catch(() => {
+      reasonEl.textContent = "NO.";
+      reasonEl.classList.add("show");
+    });
+</script>
+
+  </script>
+</body>
+</html>
