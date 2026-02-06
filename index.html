@@ -58,32 +58,6 @@
       }
     }
 
-    .no {
-      font-size: clamp(3rem, 6vw, 6rem);
-      font-weight: 900;
-      line-height: 1.1;
-      text-shadow:
-        0 0 10px rgba(255,255,255,0.3),
-        0 0 30px rgba(0,0,0,0.8);
-    }
-
-    .footer {
-      margin-top: 2rem;
-      font-size: 0.7rem;
-      opacity: 0.6;
-    }
-	
-	 .credit {
-      position: fixed;
-      bottom: 16px;
-      left: 16px;
-      font-size: 0.85rem;
-      opacity: 0.65;
-      color: white;
-      pointer-events: none;
-      text-shadow: 0 0 6px rgba(0,0,0,0.8);
-    }
-	
 	#question {
   font-size: 1.6rem;
   font-weight: 700;
@@ -140,13 +114,11 @@
     <div id="question">Why I don’t want to do it:</div>
     <div id="reason" class="no"></div>
   </div>
-
-  <a class="credit" href="https://github.com/hotheadhacker/no-as-a-service" target="_blank" rel="noopener noreferrer">
-    powered by no-as-a-service</a>
+  <a class="credit" href="https://github.com/hotheadhacker/no-as-a-service" target="_blank" rel="noopener noreferrer"> powered by no-as-a-service</a>
 </body>
 
 <script>
-  // 🎨 Randomize background colors
+  // Randomize background colors
   const root = document.documentElement;
   root.style.setProperty('--h1', Math.floor(Math.random() * 360));
   root.style.setProperty('--h2', Math.floor(Math.random() * 360));
@@ -157,7 +129,7 @@
   fetch("https://naas.isalman.dev/no")
     .then(res => res.json())
     .then(data => {
-      // small delay for dramatic effect
+      // small delay 
       setTimeout(() => {
         reasonEl.textContent = data.reason;
         reasonEl.classList.add("show");
@@ -172,3 +144,4 @@
   </script>
 </body>
 </html>
+
