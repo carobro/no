@@ -128,9 +128,9 @@
 <script>
   // Randomize background colors
   const root = document.documentElement;
-  root.style.setProperty('--h1', Math.floor(Math.random() * Math.PI));
-  root.style.setProperty('--h2', Math.floor(Math.random() * Math.PI));
-  root.style.setProperty('--h3', Math.floor(Math.random() * Math.PI));
+  root.style.setProperty('--h1', Math.floor(Math.random() * 360));
+  root.style.setProperty('--h2', Math.floor(Math.random() * 360));
+  root.style.setProperty('--h3', Math.floor(Math.random() * 360));
 
   const reasonEl = document.getElementById("reason");
 
@@ -152,6 +152,7 @@
   </script>
 </body>
 </html>
+
 
 
 
