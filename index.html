@@ -12,7 +12,7 @@
     html, body {
       height: 100%;
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'ravie';
       overflow: hidden;
     }
 
@@ -107,6 +107,12 @@
   opacity: 1;
 }
 
+	  #foo {
+  position: relative;
+}
+#foo:hover {
+  top: 5em;
+}
   </style>
 </head>
 <body>
@@ -114,6 +120,7 @@
   <div class="card">
     <div id="question">Why I don’t want to do it:</div>
     <div id="reason" class="no"></div>
+	<button id="foo">Reload</button>
   </div>
   <a class="credit" href="https://github.com/hotheadhacker/no-as-a-service" target="_blank" rel="noopener noreferrer"> powered by no-as-a-service</a>
 </body>
@@ -121,9 +128,9 @@
 <script>
   // Randomize background colors
   const root = document.documentElement;
-  root.style.setProperty('--h1', Math.floor(Math.random() * 360));
-  root.style.setProperty('--h2', Math.floor(Math.random() * 360));
-  root.style.setProperty('--h3', Math.floor(Math.random() * 360));
+  root.style.setProperty('--h1', Math.floor(Math.random() * Math.PI));
+  root.style.setProperty('--h2', Math.floor(Math.random() * Math.PI));
+  root.style.setProperty('--h3', Math.floor(Math.random() * Math.PI));
 
   const reasonEl = document.getElementById("reason");
 
@@ -145,5 +152,6 @@
   </script>
 </body>
 </html>
+
 
 
